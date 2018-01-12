@@ -11,8 +11,10 @@
 <div class="wrapper">
   <div class="container">
     <div class="search">
-      <input class="search__input" placeholder="Search username..."/>
-      <button class="search__button" onclick="retrieveData()">Search</button>
+      <form onSubmit="retrieveData(event)">
+      <input class="search__input" ref="user" name="user" placeholder="Search username..."/>
+      <button type="submit" class="search__button">Search</button>
+    </form>
     </div>
     <div class="results">
     </div>

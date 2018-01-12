@@ -7,9 +7,10 @@ const clearElement = element => {
   document.getElementsByClassName(element)[0].innerHTML = "";
 };
 
-const retrieveData = async () => {
-  await clearElement("results");
-  fetch("https://api.github.com/search/users?q=dd8398899898")
+const retrieveData = e => {
+  e.preventDefault();
+  clearElement("results");
+  fetch(`https://api.github.com/search/users?q=${e.target[0].value}`)
     .then(response => {
       return response.json();
     })
@@ -23,6 +24,7 @@ const retrieveData = async () => {
         const x = document
           .getElementsByClassName("results")[0]
           .appendChild(nothing);
+        return false;
       }
     });
 };
