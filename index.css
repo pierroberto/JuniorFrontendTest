@@ -16,14 +16,33 @@ img {
   border-radius: 5px;
 }
 
-.user__nothing {
-  margin: 20px 0;
-  padding: 20px 10px;
-  color: #8d3126;
-  background-color: #f5dfde;
-  border: 1px solid #d8c6c5;
+.repos__container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
+.repos__containerForks {
+  display: flex;
+  margin: 0 10px;
+}
+
+.repos__containerStars {
+  display: flex;
+}
+
+.repos__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.repos__item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.repos__name {
+}
 .search {
   display: flex;
   align-items: center;
@@ -71,6 +90,14 @@ img {
 .user__info {
   display: block;
   margin: 20px 10px;
+}
+
+.user__nothing {
+  margin: 20px 0;
+  padding: 20px 10px;
+  color: #8d3126;
+  background-color: #f5dfde;
+  border: 1px solid #d8c6c5;
 }
 
 .wrapper {
