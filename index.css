@@ -1,8 +1,15 @@
 .container {
   max-width: 960px;
-  display: flex;
-  justify-content: center;
   margin: 50px 0;
+  display: block;
+}
+
+.results__nothing {
+  margin: 20px 0;
+  padding: 20px 10px;
+  color: #8d3126;
+  background-color: #f5dfde;
+  border: 1px solid #d8c6c5;
 }
 
 .search {
@@ -17,4 +24,9 @@
 
 .search__input {
   height: 40px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
 }

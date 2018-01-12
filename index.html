@@ -3,16 +3,19 @@
 <head lang="en">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="js/index.js"></script>
     <title>Hello!</title>
 </head>
 <body>
 
-<div class="container">
-  <div class="search">
-    <input class="search__input" placeholder="Search username..."/>
-    <button class="search__button">Search</button>
-  </div>
-  <div class="results">
+<div class="wrapper">
+  <div class="container">
+    <div class="search">
+      <input class="search__input" placeholder="Search username..."/>
+      <button class="search__button" onclick="retrieveData()">Search</button>
+    </div>
+    <div class="results">
+    </div>
   </div>
 </div>
 </body>
