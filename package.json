@@ -1,0 +1,24 @@
+{
+  "name": "search-github",
+  "version": "1.0.0",
+  "description": "## GOALS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pierroberto/JuniorFrontendTest.git"
+  },
+  "author": "Pier Roberto Lucisano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pierroberto/JuniorFrontendTest/issues"
+  },
+  "homepage": "https://github.com/pierroberto/JuniorFrontendTest#readme",
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}
