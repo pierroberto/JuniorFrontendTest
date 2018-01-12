@@ -4,7 +4,12 @@
   display: block;
 }
 
-.results__nothing {
+img {
+  width: 100%;
+  height: auto;
+}
+
+.user__nothing {
   margin: 20px 0;
   padding: 20px 10px;
   color: #8d3126;
@@ -24,6 +29,27 @@
 
 .search__input {
   height: 40px;
+}
+
+.user {
+  margin: 20px 0;
+}
+
+.user__avatar {
+  display: flex;
+  position: relative;
+  max-width: 80px;
+  height: 80px;
+}
+
+.user__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user__info {
+  display: block;
 }
 
 .wrapper {
