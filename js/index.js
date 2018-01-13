@@ -1,3 +1,6 @@
+function test() {
+  return true;
+}
 const clearElement = elements => {
   elements.map(element => {
     // If the element exists then delete it
