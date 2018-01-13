@@ -1,12 +1,9 @@
 const clearElement = elements => {
   elements.map(element => {
     // If the element exists then delete it
-    console.log("element", element, document.getElementsByClassName(element));
     const parent = document.getElementsByClassName(element)[0];
-    console.log("parent", parent);
     if (parent) {
       while (parent.firstChild) {
-        console.log("child", parent.firstChild);
         parent.firstChild.remove();
       }
     }
@@ -65,7 +62,6 @@ const getRepos = login => {
         containerStars.classList.add("repos__containerStars");
         // I create the div which contains the number of stars
         const stars = document.createElement("div");
-
         const starsText = document.createTextNode(repo.stargazers_count);
         stars.classList.add("repos__counter");
         stars.appendChild(starsText);
@@ -134,8 +130,10 @@ const retrieveData = e => {
           generateUser(data.items[0], personalInfo.bio, personalInfo.name);
         });
         getRepos(data.items[0].login);
+        return true;
       } else {
         alert("More users has been found");
+        return false;
       }
     });
 };
