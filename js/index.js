@@ -1,5 +1,16 @@
-const clearElement = element => {
-  document.getElementsByClassName(element)[0].innerHTML = "";
+const clearElement = elements => {
+  elements.map(element => {
+    // If the element exists then delete it
+    console.log("element", element, document.getElementsByClassName(element));
+    const parent = document.getElementsByClassName(element)[0];
+    console.log("parent", parent);
+    if (parent) {
+      while (parent.firstChild) {
+        console.log("child", parent.firstChild);
+        parent.firstChild.remove();
+      }
+    }
+  });
 };
 
 const generateUser = (item, bio, name) => {
@@ -29,7 +40,6 @@ const getPersonalInfo = url => {
 };
 
 const getRepos = login => {
-  console.log("login");
   fetch(`https://api.github.com/users/${login}/repos`)
     .then(response => {
       return response.json();
@@ -96,6 +106,15 @@ const getRepos = login => {
 
 const retrieveData = e => {
   e.preventDefault();
+  clearElement([
+    "user__login",
+    "user__fullName",
+    "user__bio",
+    "user__avatar",
+    "repos__header",
+    "repos__list",
+    "user__noresult"
+  ]);
   fetch(`https://api.github.com/search/users?q=${e.target[0].value}`)
     .then(response => {
       return response.json();
@@ -103,17 +122,17 @@ const retrieveData = e => {
     .then(data => {
       // If nothing has been found I display the result
       if (!data.items.length) {
-        clearElement("user");
         let nothing = document.createElement("div");
         nothing.innerHTML = "Does not exist";
         nothing.classList.add("user__nothing");
-        document.getElementsByClassName("user")[0].appendChild(nothing);
+        document
+          .getElementsByClassName("user__noresult")[0]
+          .appendChild(nothing);
         return false;
       } else if (data.items.length === 1) {
         getPersonalInfo(data.items[0].url).then(personalInfo => {
           generateUser(data.items[0], personalInfo.bio, personalInfo.name);
         });
-        console.log("HEREEEEEE");
         getRepos(data.items[0].login);
       } else {
         alert("More users has been found");
