@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-  max-width: 960px;
+  width: 500px;
   margin: 50px 0;
   display: block;
 }
@@ -61,19 +61,28 @@ img {
 .repos__name {
 }
 
-.search {
+.search,
+.search__form {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .search__button {
-  height: 45px;
+  height: 42px;
   margin-left: 5px;
+  padding: 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
 }
 
 .search__input {
   height: 40px;
+  font-size: 16px;
+  padding: 0 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
 }
 
 .user {
@@ -92,7 +101,6 @@ img {
 
 .user__container {
   display: flex;
-  width: 500px;
   align-items: center;
 }
 
