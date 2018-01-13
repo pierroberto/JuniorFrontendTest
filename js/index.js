@@ -1,7 +1,3 @@
-function test() {
-  return true;
-}
-
 const clearElement = elements => {
   elements.map(element => {
     // If the element exists then delete it
@@ -104,9 +100,16 @@ const getRepos = login => {
     });
 };
 
-const retrieveData = e => {
-  console.log("before prevent", e);
+fetchUserData = e => {
   if (e.preventDefault) e.preventDefault();
+  return fetch(
+    `https://api.github.com/search/users?q=${e.target[0].value}`
+  ).then(response => {
+    return response.json();
+  });
+};
+
+const retrieveData = e => {
   clearElement([
     "user__login",
     "user__fullName",
@@ -116,31 +119,23 @@ const retrieveData = e => {
     "repos__list",
     "user__noresult"
   ]);
-  console.log("targer", e, typeof e);
-  fetch(`https://api.github.com/search/users?q=${e.target[0].value}`)
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      // If nothing has been found I display the result
-      if (!data.items.length) {
-        let nothing = document.createElement("div");
-        nothing.innerHTML = "Does not exist";
-        nothing.classList.add("user__nothing");
-        document
-          .getElementsByClassName("user__noresult")[0]
-          .appendChild(nothing);
-        return false;
-      } else if (data.items.length === 1) {
-        console.log("personal", data.items[0].url);
-        getPersonalInfo(data.items[0].url).then(personalInfo => {
-          generateUser(data.items[0], personalInfo.bio, personalInfo.name);
-        });
-        getRepos(data.items[0].login);
-        return true;
-      } else {
-        alert("More users has been found");
-        return false;
-      }
-    });
+  fetchUserData(e).then(data => {
+    // If nothing has been found I display the result
+    if (!data.items.length) {
+      let nothing = document.createElement("div");
+      nothing.innerHTML = "Does not exist";
+      nothing.classList.add("user__nothing");
+      document.getElementsByClassName("user__noresult")[0].appendChild(nothing);
+      return false;
+    } else if (data.items.length === 1) {
+      getPersonalInfo(data.items[0].url).then(personalInfo => {
+        generateUser(data.items[0], personalInfo.bio, personalInfo.name);
+      });
+      getRepos(data.items[0].login);
+      return true;
+    } else {
+      alert("More users has been found");
+      return false;
+    }
+  });
 };

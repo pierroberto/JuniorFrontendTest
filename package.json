@@ -4,8 +4,7 @@
   "description": "## GOALS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "jas": "jasmine"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -24,7 +23,6 @@
   },
   "dependencies": {
     "es6-promise": "^4.2.2",
-    "fs": "0.0.1-security",
     "isomorphic-fetch": "^2.2.1",
     "jsdom": "^11.5.1",
     "rewire": "^3.0.2"
