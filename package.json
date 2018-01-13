@@ -23,6 +23,10 @@
     "eslint-plugin-import": "^2.8.0"
   },
   "dependencies": {
+    "es6-promise": "^4.2.2",
+    "fs": "0.0.1-security",
+    "isomorphic-fetch": "^2.2.1",
+    "jsdom": "^11.5.1",
     "rewire": "^3.0.2"
   }
 }

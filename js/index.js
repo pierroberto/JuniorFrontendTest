@@ -1,6 +1,7 @@
 function test() {
   return true;
 }
+
 const clearElement = elements => {
   elements.map(element => {
     // If the element exists then delete it
@@ -104,7 +105,8 @@ const getRepos = login => {
 };
 
 const retrieveData = e => {
-  e.preventDefault();
+  console.log("before prevent", e);
+  if (e.preventDefault) e.preventDefault();
   clearElement([
     "user__login",
     "user__fullName",
@@ -114,6 +116,7 @@ const retrieveData = e => {
     "repos__list",
     "user__noresult"
   ]);
+  console.log("targer", e, typeof e);
   fetch(`https://api.github.com/search/users?q=${e.target[0].value}`)
     .then(response => {
       return response.json();
@@ -129,6 +132,7 @@ const retrieveData = e => {
           .appendChild(nothing);
         return false;
       } else if (data.items.length === 1) {
+        console.log("personal", data.items[0].url);
         getPersonalInfo(data.items[0].url).then(personalInfo => {
           generateUser(data.items[0], personalInfo.bio, personalInfo.name);
         });
