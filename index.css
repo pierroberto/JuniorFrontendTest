@@ -24,11 +24,21 @@ img {
 
 .repos__containerForks {
   display: flex;
-  margin: 0 10px;
+  margin: 0 20px;
 }
 
 .repos__containerStars {
   display: flex;
+}
+
+.repos__counter {
+  margin-right: 2px;
+}
+
+.repos__head {
+  font-size: 24px;
+  padding: 15px 0;
+  border-bottom: 2px solid #ccc;
 }
 
 .repos__icon {
@@ -39,13 +49,22 @@ img {
 .repos__item {
   display: flex;
   justify-content: space-between;
+  padding: 25px 0;
+  margin: 0 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.repos__item:last-child {
+  border: none;
 }
 
 .repos__name {
 }
+
 .search {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .search__button {
@@ -73,7 +92,7 @@ img {
 
 .user__container {
   display: flex;
-  justify-content: space-between;
+  width: 500px;
   align-items: center;
 }
 

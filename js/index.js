@@ -29,11 +29,18 @@ const getPersonalInfo = url => {
 };
 
 const getRepos = login => {
+  console.log("login");
   fetch(`https://api.github.com/users/${login}/repos`)
     .then(response => {
       return response.json();
     })
     .then(repos => {
+      // I generate the header for the list of the repos
+      const header = document.createElement("div");
+      header.classList.add("repos__head");
+      const headerText = document.createTextNode("Repositories");
+      header.appendChild(headerText);
+      document.getElementsByClassName("repos__header")[0].appendChild(header);
       repos.map(repo => {
         // I create a container for each repo
         const container = document.createElement("div");
@@ -49,7 +56,8 @@ const getRepos = login => {
         // I create the div which contains the number of stars
         const stars = document.createElement("div");
 
-        const starsText = document.createTextNode("55");
+        const starsText = document.createTextNode(repo.stargazers_count);
+        stars.classList.add("repos__counter");
         stars.appendChild(starsText);
         const starsPicture = document.createElement("img");
         starsPicture.classList.add("repos__icon");
@@ -66,7 +74,8 @@ const getRepos = login => {
         containerForks.classList.add("repos__containerForks");
         // I create the container for the forks
         const forks = document.createElement("div");
-        const forksText = document.createTextNode("22");
+        const forksText = document.createTextNode(repo.forks_count);
+        forks.classList.add("repos__counter");
         forks.appendChild(forksText);
         const forksPicture = document.createElement("img");
         forksPicture.classList.add("repos__icon");
@@ -92,7 +101,6 @@ const retrieveData = e => {
       return response.json();
     })
     .then(data => {
-      console.log("data", data.items);
       // If nothing has been found I display the result
       if (!data.items.length) {
         clearElement("user");
@@ -105,6 +113,7 @@ const retrieveData = e => {
         getPersonalInfo(data.items[0].url).then(personalInfo => {
           generateUser(data.items[0], personalInfo.bio, personalInfo.name);
         });
+        console.log("HEREEEEEE");
         getRepos(data.items[0].login);
       } else {
         alert("More users has been found");
