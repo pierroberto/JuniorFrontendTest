@@ -1,49 +1,23 @@
-# JuniorFrontendTest
+# Search Github Repos
 
-## GOALS
+Search Github Repos allows the user to look for users in Github and see the list of their project. All you need is to type the correct username of the person you are looking for and then click on the Search button in order to display the result.
 
+<img src="images/image1.png" />
 
-#### The main goal of this tech test is to create a client side web application that reproduces the screenshots below by using [GitHub API](https://developer.github.com/v3/) .
+<img src="images/image2.png" />
 
-We will only evaluate the client side code and the criteria will be based mainly on:
+<img src="images/image3.png" />
 
-1. Good use of **pure Javascript** language without external libraries and frameworks like jQuery, React...
-2. Clean HTML and CSS markup
-3. Clean, maintainable & easy­to­read
-4. Good architectural practices
+# Installation
 
-## HOW TO START
+* Clone the repo and cd into it
+* ```npm install```
+* Run ```python -m SimpleHTTPServer 1337```
 
-1. Investigate the github api calls for user and repos (for example: test them in the browser)
-2. Fork this repository & cd into the directory
-3. Launch the web application, for example with: python -m SimpleHTTPServer 1337
-4. Open the browser with http://localhost:1337/ and start coding!
+In order to run the the tests:
 
-## NOT REQUIRED, BUT IMPRESSIVE
+* ```npm test```
 
-- Adding Unit Testing. External libraries limitation doesn't apply here, you can use Jasmine, Karma...
+# Tech Stack
 
-
-## SCREENSHOTS
-
-#### First Screen
-
-The user can search a username of GitHub
-
-![](https://github.com/gerardcobas/JuniorFrontendTest/blob/master/images/First-Screen.png)
-
-#### Success Screen
-
-If the searched username does exist: The searched user profile is displayed with all his repositories
-
-![](https://github.com/gerardcobas/JuniorFrontendTest/blob/master/images/Success-screen.png)
-
-#### Error Screen
-
-If the searched username does not exist: An error is shown
-
-![](https://github.com/gerardcobas/JuniorFrontendTest/blob/master/images/Error-screen.png)
-
-
-
-
+* Javascript
