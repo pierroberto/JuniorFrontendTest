@@ -37,67 +37,67 @@ const getPersonalInfo = url => {
 };
 
 const getRepos = login => {
-  fetch(`https://api.github.com/users/${login}/repos`)
-    .then(response => {
-      return response.json();
-    })
-    .then(repos => {
-      // I generate the header for the list of the repos
-      const header = document.createElement("div");
-      header.classList.add("repos__head");
-      const headerText = document.createTextNode("Repositories");
-      header.appendChild(headerText);
-      document.getElementsByClassName("repos__header")[0].appendChild(header);
-      repos.map(repo => {
-        // I create a container for each repo
-        const container = document.createElement("div");
-        container.classList.add("repos__item");
-        // I create a div for the repo's name
-        const repoName = document.createElement("div");
-        const repoText = document.createTextNode(repo.name);
-        repoName.appendChild(repoText);
-        repoName.classList.add("repos__name");
-        // I create a container for the starts and the counter
-        const containerStars = document.createElement("div");
-        containerStars.classList.add("repos__containerStars");
-        // I create the div which contains the number of stars
-        const stars = document.createElement("div");
-        const starsText = document.createTextNode(repo.stargazers_count);
-        stars.classList.add("repos__counter");
-        stars.appendChild(starsText);
-        const starsPicture = document.createElement("img");
-        starsPicture.classList.add("repos__icon");
-        starsPicture.src = "assets/star.png";
-        containerStars.appendChild(stars);
-        containerStars.appendChild(starsPicture);
-        // I append to the second container the star container
-        const container2 = document.createElement("div");
-        container2.appendChild(containerStars);
-        // I create a container for the stars and forks
-        container2.classList.add("repos__container");
-        // I create a container for the forks and the counter
-        const containerForks = document.createElement("div");
-        containerForks.classList.add("repos__containerForks");
-        // I create the container for the forks
-        const forks = document.createElement("div");
-        const forksText = document.createTextNode(repo.forks_count);
-        forks.classList.add("repos__counter");
-        forks.appendChild(forksText);
-        const forksPicture = document.createElement("img");
-        forksPicture.classList.add("repos__icon");
-        forksPicture.src = "assets/fork.png";
-        containerForks.appendChild(forks);
-        containerForks.appendChild(forksPicture);
-        container2.appendChild(containerForks);
-        // I append the repo's name to the container
-        container.appendChild(repoName);
-        container.appendChild(container2);
-        // I append the container to the document
-        document
-          .getElementsByClassName("repos__list")[0]
-          .appendChild(container);
-      });
+  return fetch(`https://api.github.com/users/${login}/repos`).then(response => {
+    return response.json();
+  });
+};
+
+const renderRepos = login => {
+  getRepos(login).then(repos => {
+    // I generate the header for the list of the repos
+    const header = document.createElement("div");
+    header.classList.add("repos__head");
+    const headerText = document.createTextNode("Repositories");
+    header.appendChild(headerText);
+    document.getElementsByClassName("repos__header")[0].appendChild(header);
+    repos.map(repo => {
+      // I create a container for each repo
+      const container = document.createElement("div");
+      container.classList.add("repos__item");
+      // I create a div for the repo's name
+      const repoName = document.createElement("div");
+      const repoText = document.createTextNode(repo.name);
+      repoName.appendChild(repoText);
+      repoName.classList.add("repos__name");
+      // I create a container for the starts and the counter
+      const containerStars = document.createElement("div");
+      containerStars.classList.add("repos__containerStars");
+      // I create the div which contains the number of stars
+      const stars = document.createElement("div");
+      const starsText = document.createTextNode(repo.stargazers_count);
+      stars.classList.add("repos__counter");
+      stars.appendChild(starsText);
+      const starsPicture = document.createElement("img");
+      starsPicture.classList.add("repos__icon");
+      starsPicture.src = "assets/star.png";
+      containerStars.appendChild(stars);
+      containerStars.appendChild(starsPicture);
+      // I append to the second container the star container
+      const container2 = document.createElement("div");
+      container2.appendChild(containerStars);
+      // I create a container for the stars and forks
+      container2.classList.add("repos__container");
+      // I create a container for the forks and the counter
+      const containerForks = document.createElement("div");
+      containerForks.classList.add("repos__containerForks");
+      // I create the container for the forks
+      const forks = document.createElement("div");
+      const forksText = document.createTextNode(repo.forks_count);
+      forks.classList.add("repos__counter");
+      forks.appendChild(forksText);
+      const forksPicture = document.createElement("img");
+      forksPicture.classList.add("repos__icon");
+      forksPicture.src = "assets/fork.png";
+      containerForks.appendChild(forks);
+      containerForks.appendChild(forksPicture);
+      container2.appendChild(containerForks);
+      // I append the repo's name to the container
+      container.appendChild(repoName);
+      container.appendChild(container2);
+      // I append the container to the document
+      document.getElementsByClassName("repos__list")[0].appendChild(container);
     });
+  });
 };
 
 fetchUserData = e => {
@@ -131,7 +131,7 @@ const retrieveData = e => {
       getPersonalInfo(data.items[0].url).then(personalInfo => {
         generateUser(data.items[0], personalInfo.bio, personalInfo.name);
       });
-      getRepos(data.items[0].login);
+      renderRepos(data.items[0].login);
       return true;
     } else {
       alert("More users has been found");

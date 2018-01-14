@@ -35,10 +35,8 @@ const deleteElements = async elements => {
   const document = await addElements();
   elements.map(element => {
     const parent = document.getElementsByClassName(element)[0];
-    console.log("PARENT", parent);
     if (parent) {
       while (parent.firstChild) {
-        console.log("PARENT CHILD", parent.firstChild);
         parent.firstChild.remove();
       }
     }
