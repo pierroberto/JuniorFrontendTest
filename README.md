@@ -1,12 +1,12 @@
 # Search Github Repos
 
-Search Github Repos allows the user to look for users in Github and see the list of their project. All you need is to type the correct username of the person you are looking for and then click on the Search button in order to display the result.
+Search Github Repos allows the user to look for users in Github and see the list of their projects. All you need is to type the correct username of the person you are looking for and then click on the Search button in order to display the results.
 
-<img src="images/image1.png" />
+<img src="images/image1.png"  width="60%"/>
 
-<img src="images/image2.png" />
+<img src="images/image2.png" width="60%" />
 
-<img src="images/image3.png" />
+<img src="images/image3.png" width="60%"/>
 
 # Installation
 
