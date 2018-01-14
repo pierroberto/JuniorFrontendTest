@@ -50,12 +50,24 @@ describe("Retrieve the correct information for the user", () => {
 });
 
 describe("Add elements to the DOM", () => {
-  it("Should add nodes from the parent", async () => {
+  it("Should add nodes to the parent", async () => {
     const document = await dom.addElements();
-    const avatar = document.createElement("img");
     expect(document.querySelector(".user__avatar")).not.toBe(null);
     expect(document.querySelector(".user__login")).not.toBe(null);
     expect(document.querySelector(".user__bio")).not.toBe(null);
     expect(document.querySelector(".user__fullName")).not.toBe(null);
+  });
+  it("Should delete node from the parent", async () => {
+    const toBeDeleted = [
+      "user__login",
+      "user__fullName",
+      "user__bio",
+      "user__avatar"
+    ];
+    const document = await dom.deleteElements(toBeDeleted);
+    expect(document.querySelector(".user__avatar").firstChild).toBe(null);
+    expect(document.querySelector(".user__login").firstChild).toBe(null);
+    expect(document.querySelector(".user__bio").firstChild).toBe(null);
+    expect(document.querySelector(".user__fullName").firstChild).toBe(null);
   });
 });
